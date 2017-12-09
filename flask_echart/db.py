@@ -6,7 +6,7 @@ from sqlalchemy.ext.declarative import declarative_base
 
 BaseModel = declarative_base()
 DB_CONNECT_STRING = 'mysql+pymysql://root:hillstone@localhost:3306/app?charset=utf8'
-engine = create_engine(DB_CONNECT_STRING, convert_unicode=True, echo=True)
+engine = create_engine(DB_CONNECT_STRING, echo=True)
 db_session = scoped_session(sessionmaker(autocommit=False,
                                          autoflush=False,
                                          bind=engine))
@@ -17,7 +17,7 @@ def init_db():
     Base.metadata.create_all(bind=engine)
 
 
-class Cpu(BaseModel):
+class Cpu(Base):
     __tablename__ = 'cpu_moniter'
     id = Column(Integer, primary_key=True, autoincrement=True)
     time = Column(DateTime, nullable=False)
