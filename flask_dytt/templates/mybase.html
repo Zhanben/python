@@ -1,0 +1,54 @@
+{% extends "bootstrap/base.html" %}
+{% block title %}电影天堂 - {{ title }}{% endblock %}
+{% block head %}
+    {{super()}}
+    <meta charset="utf-8">
+    <title>电影天堂</title>
+    <link rel="icon" href="{{url_for('static', filename='image/fav.ico')}}" type="image/x-coin">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}" type="text/css">
+    <script src="{{url_for('static', filename='scripts/jquery-3.1.1.js')}}"></script>
+    <script src="{{url_for('static', filename='scripts/echarts.min.js')}}"></script>
+{% endblock %}
+
+{% block navbar %}
+    <div class="navbar navbar-inverse" role="navigation" >
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/" style="font-size:24px">电影天堂</a>
+            </div>
+            <div class="navbar-collapse collapse" id="collapse-header">
+                <ul class="nav navbar-nav" >
+                    <li><a href="/action" class="navbar-brand" style="padding-left:30px;">动作片</a></li>
+                    <li><a href="/love" class="navbar-brand" style="padding-left:30px;">爱情片</a></li>
+                    <li><a href="/comedy" class="navbar-brand" style="padding-left:30px;">喜剧片</a></li>
+                    <li><a href="/science" class="navbar-brand" style="padding-left:30px;">科幻片</a></li>
+                    <li><a href="/war" class="navbar-brand" style="padding-left:30px;">战争片</a></li>
+                    <li><a href="/cartoon" class="navbar-brand" style="padding-left:30px;">动画片</a></li>
+                </ul>
+              <form action="/search" class="navbar-form navbar-right" style="margin-top:10px;" >
+                <div class="form-group has-feedback">
+                  <input class="form-control input-sm" name="keyword" placeholder="搜索内容" type="text" value="">
+                  <i class="fa fa-search form-control-feedback"></i>
+                </div>
+              </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content%}
+    {% block page_content%}
+    {%endblock%}
+    <footer class="container-fluid page-footer">
+        <p align="center" style="margin-top: 20px;color:#878B91;">
+            Copyright &copy; 2017 Benzhang
+        </p>
+    </footer>
+{% endblock%}
+
