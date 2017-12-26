@@ -1,17 +1,11 @@
 from sqlalchemy import Column
-from sqlalchemy import create_engine
-from sqlalchemy.orm import scoped_session, sessionmaker
 from sqlalchemy.types import Integer, String
 from sqlalchemy.ext.declarative import declarative_base
+from .import db
 
 BaseModel = declarative_base()
-DB_CONNECT_STRING = 'mysql+pymysql://root:hillstone@localhost:3306/film?charset=utf8'
-engine = create_engine(DB_CONNECT_STRING, echo=True)
-db_session = scoped_session(sessionmaker(autocommit=False,
-                                         autoflush=False,                                         bind=engine))
-Base = declarative_base()
 
-class Film(BaseModel):
+class Film(db.Model):
     __tablename__ = 'film'
     uid = Column(Integer, primary_key=True)
     name_cn = Column(String(100))
@@ -28,6 +22,3 @@ class Film(BaseModel):
     director = Column(String(30))
     image_name = Column(String(50))
     download_url = Column(String(500))
-
-def init_db():
-    Base.metadata.create_all(bind=engine)

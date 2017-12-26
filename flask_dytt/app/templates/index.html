@@ -1,0 +1,14 @@
+{% extends "mybase.html" %}
+{% block content %}
+<div class="content">
+    <ul class="films">
+        {% for film in films %}
+        <li class="film film-style">
+            <div class="film-name">{{ film.name_cn}}</div>
+            <div class="film-url">{{ film.download_url }}</div>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+
+{% endblock %}

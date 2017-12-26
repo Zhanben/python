@@ -10,7 +10,7 @@ if __name__ == "__main__":
     init_db(engine)
     DB_Session = sessionmaker(bind=engine)
     session = DB_Session()
-    url = "http://www.dy2018.com/i/98687.html"
+    url = "http://www.dy2018.com/i/98729.html"
     response = do_request(url)
     film = extract_details1(response, url)
 
